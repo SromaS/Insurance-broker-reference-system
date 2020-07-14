@@ -26,6 +26,7 @@ class CallingMailing(models.Model):
     """Запись для консультации по телефону"""
     phoneNumber = models.CharField("Номер телефона", max_length=25, unique=True)
     date = models.DateField("Дата отправки", null=True)
+    name = models.CharField("ФИО", max_length=220, default='Иван Иванов Иванович')
 
     def save(self, *args, **kwargs):
         self.date = datetime.now()
@@ -65,9 +66,6 @@ class Article(models.Model):
     likesCount = models.IntegerField("Количество лайков", null=True)
     shortDescription = models.TextField("Краткое описание", max_length=455, null=True)
 
-    #def get_absolute_url(self):
-     #   return reverse("article_detail", kwargs={"slug": self.url})
-
     def __str__(self):
         return self.title
 
@@ -78,11 +76,10 @@ class Article(models.Model):
 
 class Views(models.Model):
     """Просмотры"""
-    user_ip = models.CharField(max_length=75, null=True, blank=True)
     article = models.ForeignKey(Article, verbose_name="Статья", on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Просмотр {self.user_ip} - {self.article}"
+        return f"Просмотр {self.article}"
 
     class Meta:
         verbose_name = "Просмотр"
@@ -130,3 +127,17 @@ class ReviewAnswer(models.Model):
     class Meta:
         verbose_name = "Ответ на отзыв"
         verbose_name_plural = "Ответы на отзывы"
+
+
+class InsurancePrograms(models.Model):
+    """Программы страхования"""
+    title = models.CharField("Заголовок", max_length=150)
+    content = RichTextField(blank=True, default='')
+    url = models.SlugField(max_length=160, unique=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Программа страхования"
+        verbose_name_plural = "Программы страхования"

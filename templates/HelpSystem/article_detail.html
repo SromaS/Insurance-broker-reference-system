@@ -1,48 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'HelpSystem/base.html' %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../../static/css/style.css">
-    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-grid.css">
-    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <title>Статья</title>
-</head>
-
-<body>
+{% block content %}
 
 <div class="wrapper">
-    <header>
-        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white box-shadow">
-
-            <h4 class="my-0 mr-md-auto font-weight-normal"><b>IRSIB</b></h4>
-
-            <ul class="nav nav-pills flex-column flex-sm-row justify-content-end ">
-                <li class="nav-item ">
-                    <a class="nav-link" href="/">Главная</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Программы страхования</a>
-                </li>
-
-
-                <li class="nav-item">
-                    <a class="nav-link active" href="/articles">Статьи</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Расчёт страховки</a>
-                </li>
-
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">О компании</a>
-                </li>
-            </ul>
-
-        </div>
-    </header>
     <div class="container" style="height: 120px;"></div>
     <div class="card mb-3">
         <div class="card">
@@ -62,16 +22,43 @@
                 <img src="/media/{{ article.image }}" class="card-img-top" alt="...">
                 <div class="container" style="height: 10px;"></div>
 
-                <h5 class="card-text ">#страхование #имущество</h5>
                 <hr style="border: none;  height: 1px; background-color: gray; width: 96%; margin-left: -0.2%;">
-                <div class="row">
-                    <div class="col-10">
-                        <p class="card-text"><i>Просмотров:</i> {{ article.viewsCount }}</p>
+                {% if user.is_authenticated %}
+                    <div class="row">
+                        <div class="col-10">
+                            <p class="card-text"><i>Просмотров:</i> {{ article.viewsCount }}</p>
+                        </div>
+                        {% if liked %}
+                            <form class="col" action="{% url 'del_like' article.id %}" method="post" id="formLike">
+                                {% csrf_token %}
+                                <button type="submit" class="badge badge-info" style="font-size: 16px">Убрать
+                                    оценку
+                                    <i style="color:red;">♥</i>{{ article.likesCount }}</button>
+                            </form>
+                        {% else %}
+                            <form class="col" action="{% url 'add_like' article.id %}" method="post" id="formLike">
+                                {% csrf_token %}
+                                <input type="hidden" name="article" value="{{ article.id }}">
+                                <input type="hidden" name="user" value="{{ request.user.id }}">
+                                <button type="submit" class="badge badge-success" style="font-size: 16px">Мне
+                                    нравится
+                                    <i style="color:red;">♥</i>{{ article.likesCount }}</button>
+                            </form>
+                        {% endif %}
                     </div>
-                    <div class="col">
-                        <p class="card-text">Оценок:<i style="color:red;">♥</i>{{ article.likesCount }}</p>
+                {% else %}
+
+                    <div class="row">
+                        <div class="col-10">
+                            <p class="card-text"><i>Просмотров:</i> {{ article.viewsCount }}</p>
+                        </div>
+                        <div class="col">
+                            <p class="card-text">Оценок:<i style="color:red;">♥</i>{{ article.likesCount }}</p>
+                        </div>
                     </div>
-                </div>
+
+                {% endif %}
+
             </div>
 
         </div>
@@ -82,13 +69,11 @@
 <div class="container">
 
     <div class="single-form-center">
-        <!-- contact form grid -->
         <div class="contact-single">
             <h3 class="editContent">
                 <span class="sub-tittle editContent"></span>Оставить
                 отзыв о статье</h3>
-            <form action="{% url 'add_review' article.id %}" method="post" class="mt-4"
-                  id="formReview">
+            <form action="{% url 'add_review' article.id %}" method="post" class="mt-4" id="formReview">
                 {% csrf_token %}
                 <input type="hidden" name="parent" id="contactparent" value="">
                 <div class="form-group editContent">
@@ -99,21 +84,30 @@
                               id="contactcomment" required=""></textarea>
                 </div>
                 <div class="d-sm-flex">
-                    <div class="col-sm-6 form-group p-0 editContent">
-                        <label for="contactusername" class="editContent">
-                            Имя *
-                        </label>
+                    {% if user.is_authenticated %}
                         <input type="text" class="form-control border" name="name"
-                               id="contactusername" required="">
-                    </div>
-                    <div class="col-sm-6 form-group ml-sm-3 editContent">
-                        <label for="contactemail" class="editContent">
-                            Email *
-                        </label>
+                               id="contactusername" hidden required="" value="{{ user.username }}">
                         <input type="email" class="form-control border" name="email"
-                               id="contactemail" required="">
-                    </div>
+                               id="contactemail" hidden required="" value="{{ user.email }}">
+                    {% else %}
+                        <div class="col-sm-6 form-group p-0 editContent">
+                            <label for="contactusername" class="editContent">
+                                Имя *
+                            </label>
+                            <input type="text" class="form-control border" name="name"
+                                   id="contactusername" required="">
+                        </div>
+                        <div class="col-sm-6 form-group ml-sm-3 editContent">
+                            <label for="contactemail" class="editContent">
+                                Email *
+                            </label>
+                            <input type="email" class="form-control border" name="email"
+                                   id="contactemail" required="">
+                        </div>
+
+                    {% endif %}
                 </div>
+
                 {% csrf_token %}
                 <button type="submit"
                         class="btn btn-dark">
@@ -121,7 +115,6 @@
                 </button>
             </form>
         </div>
-        <!--  //contact form grid ends here -->
         <br>
         <h3><span class="sub-tittle editContent"></span>Комментарии других посетителей</h3>
         {% for review in article.reviews_set.all %}
@@ -156,48 +149,7 @@
     </div>
 </div>
 
-{##}
-{#<div class="container" style="height: 80px"></div>#}
-{#<div class="container">#}
-{#    <form class="form">#}
-{#        <div class="text-center"#}
-{#             style="font-family: 'Montserrat', sans-serif; font-size: 14pt; font-weight: 500; margin-bottom: 10px;">#}
-{#            Подписаться на#}
-{#            рассылку#}
-{#        </div>#}
-{#        <div class="form-group d-flex justify-content-center" style="margin:0;">#}
-{#            <input type="email" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp"#}
-{#                   style="width: 30rem;">#}
-{#        </div>#}
-{#        <small id="emailHelp" class="form-text text-muted text-center">Мы никогда не будем делиться вашей#}
-{#            электронной почтой#}
-{#            ни с кем другим.</small>#}
-{#        <div class="row">#}
-{#            <div class="col text-center">#}
-{#                <button type="submit" class="btn btn-dark"#}
-{#                        style="width: 30rem; margin-top: 2px;">Подписаться#}
-{#                </button>#}
-{#            </div>#}
-{#        </div>#}
-{#    </form>#}
-{#</div>#}
-
-
-
 <div class="container" style="height: 60px;"></div>
-
-<footer class="pt-2 my-md-1 pt-md-2 border-top">
-    <div class="row">
-        <div class="col-2 col-md">
-            <div class="p-1 text-center" style="font-family: 'Montserrat', sans-serif;">Created by Roma SEN</div>
-            <small class="d-block mb-4 text-muted text-center "
-                   style="font-family: 'Montserrat', sans-serif;">&copy; 2020 IRSIB</small>
-        </div>
-    </div>
-</footer>
-
-</div>
-
 <script>
     function addReview(name, id) {
         document.getElementById("contactparent").value = id;
@@ -205,14 +157,4 @@
     }
 </script>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-</script>
-<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
-
-</body>
-
-</html>
+{% endblock content %}

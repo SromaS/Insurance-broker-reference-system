@@ -1,167 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'HelpSystem/base.html' %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../../static/css/style.css">
-    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-grid.css">
-    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <title>Список статей</title>
-</head>
-
-<body>
+{% block content %}
 
     <div class="wrapper">
-        <header>
-            <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white box-shadow">
-
-                <h4 class="my-0 mr-md-auto font-weight-normal"><b>IRSIB</b></h4>
-
-                <ul class="nav nav-pills flex-column flex-sm-row justify-content-end ">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="/">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Программы страхования</a>
-                    </li>
-                    <!--           -->
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Статьи</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Расчёт страховки</a>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">О компании</a>
-                    </li>
-                </ul>
-
-            </div>
-        </header>
-        <div class="container" style="height: 120px;"></div>
+        <div class="container" style="height: 80px;"></div>
         <div class="wrapper">
 
             <nav class="navbar navbar-light">
                 <a class="navbar-brand" style="font-size: 20pt;">Статьи</a>
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search">
+                <form action="{% url 'articles_list' %}" class="form-inline" method="get">
+                    {% csrf_token %}
+                    <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search"
+                           name="search" {% if search_contain %} value="{{ search_contain }}" {% endif %}>
                     <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Найти</button>
                 </form>
             </nav>
             <div class="container" style="height: 20px;"></div>
 
             {% for article in articles_list %}
-            <div class="card mb-3" style="max-width: 1300px; max-height: 500px;">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="/media/{{ article.image }}" class="card-img" alt="Упс, что-то пошло не так..."
-                            style="min-height: 18em;">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-9">
-                                    <h4 class="card-title alert-link">{{article.title}}</h4>
+                <div class="card mb-3" style="max-width: 1300px; max-height: 500px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="/media/{{ article.image }}" class="card-img" alt="Упс, что-то пошло не так..."
+                                 style="min-height: 18em;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <h4 class="card-title alert-link">{{ article.title }}</h4>
+                                    </div>
+                                    <div class="col">
+                                        <p class="card-text text-muted" style="margin-top: 0.2em;">
+                                            Автор: {{ article.author }}</p>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <p class="card-text text-muted" style="margin-top: 0.2em;">Автор: {{article.author}}</p>
-                                </div>
-                            </div>
-                            <p class="card-text">{{article.shortDescription}}
-                            </p>
-                            <hr style="border: none;  height: 1px; background-color: gray; width: 96%; margin-left: -0.2%;">
+                                <p class="card-text">{{ article.shortDescription }}
+                                </p>
+                                <hr style="border: none;  height: 1px; background-color: gray; width: 96%; margin-left: -0.2%;">
 
-                            <div class="row">
-                                <div class="col">
-                                    <p class="card-text"><i>Просмотров:</i> {{article.viewsCount}}</p>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="card-text"><i>Просмотров:</i> {{ article.viewsCount }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p class="card-text">Оценок:<i style="color:red;">♥</i>{{ article.likesCount }}
+                                        </p>
+                                    </div>
+                                    <div class="col">
+                                        <a href="/{{ article.url }}">Читать далее...</a>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <p class="card-text">Оценок:<i style="color:red;">♥</i>{{article.likesCount}}</p>
-                                </div>
-                                <div class="col">
-                                    <a href="/{{ article.url }}">Читать далее...</a>
-                                </div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
 
-<div class="container" style="height: 60px;"></div>
 
-<div class="container">
-    <form class="form" action="{% url 'add_phone' %}" method="post" >
-        <div class="text-center"
-             style="font-family: 'Montserrat', sans-serif; font-size: 14pt; font-weight: 500; margin-bottom: 10px;">
-            Желаете записаться на онлайн консультацию?
-        </div>
-        <div class="form-group d-flex justify-content-center" style="margin:0;">
-            <input type="number" class="form-control " name="phoneNumber" aria-describedby="CallHelp"
-                   style="width: 30rem;">
-        </div>
-        <small id="emailHelp" class="form-text text-muted text-center">Мы никогда не будем делиться вашим телефонным номером
-            ни с кем другим.</small>
-            <div class="col text-center">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-dark" style="width: 30rem; margin-top: 2px;">Записаться</button>
-            </div>
-    </form>
-</div>
-
-
-
-{#    <div class="container">#}
-{#        <form class="form">#}
-{#            <div class="text-center"#}
-{#                style="font-family: 'Montserrat', sans-serif; font-size: 14pt; font-weight: 500; margin-bottom: 10px;">#}
-{#                Подписаться на#}
-{#                рассылку</div>#}
-{#            <div class="form-group d-flex justify-content-center" style="margin:0;">#}
-{#                <input type="email" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp"#}
-{#                    style="width: 30rem;">#}
-{#            </div>#}
-{#            <small id="emailHelp" class="form-text text-muted text-center">Мы никогда не будем делиться вашей#}
-{#                электронной почтой#}
-{#                ни с кем другим.</small>#}
-{#            <div class="row">#}
-{#                <div class="col text-center">#}
-{#                    <button type="submit" class="btn btn-dark"#}
-{#                        style="width: 30rem; margin-top: 2px;">Подписаться</button>#}
-{#                </div>#}
-{#            </div>#}
-{#        </form>#}
-{#    </div>#}
-
-    <div class="container" style="height: 60px;"></div>
-
-    <footer class="pt-2 my-md-1 pt-md-2 border-top">
-        <div class="row">
-            <div class="col-2 col-md">
-                <div class="p-1 text-center" style="font-family: 'Montserrat', sans-serif;">Created by Roma SEN</div>
-                <small class="d-block mb-4 text-muted text-center "
-                    style="font-family: 'Montserrat', sans-serif;">&copy; 2020 IRSIB</small>
-            </div>
-        </div>
-    </footer>
+        <div class="container" style="height: 60px;"></div>
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="../../static/bootstrap/js/bootstrap.min.js"></script>
-
-</body>
-
-</html>
+{% endblock content %}

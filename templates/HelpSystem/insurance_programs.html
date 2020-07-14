@@ -1,0 +1,237 @@
+{% extends 'HelpSystem/base.html' %}
+{% block content %}
+
+    <div class="container" style="height: 50px;"></div>
+    <div class="wrapper">
+        <div class="row">
+
+            <div class="col-md-4 col-md-pull-8 col-sm-12">
+                <ul class="list-unstyled components">
+                    <li>
+                        <a href="#OrganizationSubmenu" data-toggle="collapse" aria-expanded="false"
+                           class="list-group-item list-group-item-action
+                        {% if insuranceProgram.url == "organization" %} active {% endif %}">
+                            Организациям
+                            <span>
+                            <i class="fa fa-caret-down"></i>
+                        </span>
+                        </a>
+                        <div class="container" style="padding-right: 0px">
+                            <ul class="collapse list-unstyled" id="OrganizationSubmenu">
+                                <li>
+                                    <a href="#OrganizationSubSubmenu1" data-toggle="collapse" aria-expanded="false"
+                                       class="list-group-item list-group-item-action">Страхование здоровья
+                                        <span>
+                                    <i class="fa fa-caret-down"></i>
+                                </span>
+                                    </a>
+                                    <div class="container" style="padding-right: 0px">
+                                        <ul class="collapse list-unstyled" id="OrganizationSubSubmenu1">
+                                            <li>
+                                                <a href="/programs/strahovanie-zdorovja" class="list-group-item list-group-item-action
+                                    {% if insuranceProgram.url == "strahovanie-zdorovja" %} active {% endif %}">
+                                                    Страхование от несчастных случаев(ДМС)</a>
+                                            </li>
+                                            <li>
+                                                <a href="/programs/medicinskoe-strahovanie" class="list-group-item list-group-item-action
+                                    {% if insuranceProgram.url == "medicinskoe-strahovanie" %} active {% endif %}">
+                                                    Добровольное страхование медицинских расходов</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#OrganizationSubSubmenu2" data-toggle="collapse" aria-expanded="false"
+                                       class="list-group-item list-group-item-action">Страхование имущества
+                                        <span>
+                                    <i class="fa fa-caret-down"></i>
+                                </span>
+                                    </a>
+                                    <div class="container" style="padding-right: 0px">
+                                        <ul class="collapse list-unstyled" id="OrganizationSubSubmenu2">
+                                            <li>
+                                                <a href="/programs/strahovanie-gruzov" class="list-group-item list-group-item-action
+                                    {% if insuranceProgram.url == "strahovanie-gruzov" %} active {% endif %}">
+                                                    Страхование грузов в Минске!</a>
+                                            </li>
+                                            <li>
+                                                <a href="/programs/strahovanie-finansovyh-riskov-zashhita-investicij"
+                                                   class="list-group-item list-group-item-action
+                                    {% if insuranceProgram.url == "strahovanie-finansovyh-riskov-zashhita-investicij" %} active {% endif %}">
+                                                    Страхование финансовых рисков, защита инвестиций</a>
+                                            </li>
+                                            <li>
+                                                <a href="/programs/strahovanie-informacionnyh-riskov" class="list-group-item list-group-item-action
+                                    {% if insuranceProgram.url == "strahovanie-informacionnyh-riskov" %} active {% endif %}">
+                                                    Страхование информационных рисков</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="/programs/korporativnoe-strahovanie"
+                                       class="list-group-item list-group-item-action {% if insuranceProgram.url == "korporativnoe-strahovanie" %} active {% endif %}">Корпоротивное
+                                        страхование — комплекс
+                                        для юр. лиц </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#personSubmenu" data-toggle="collapse" aria-expanded="false"
+                           class="list-group-item  list-group-item-action {% if insuranceProgram.url == "chastnym-licam" %} active {% endif %}">
+                            Частным лицам
+                            <span>
+                            <i class="fa fa-caret-down"></i>
+                        </span>
+                        </a>
+                        <div class="container" style="padding-right: 0px">
+                            <ul class="collapse list-unstyled" id="personSubmenu">
+                                <li>
+                                    <a href="#personSubmenu1" data-toggle="collapse" aria-expanded="false"
+                                       class="list-group-item list-group-item-action">Страхование автомобиля
+                                        <span>
+                                    <i class="fa fa-caret-down"></i>
+                                </span>
+                                    </a>
+                                    <div class="container" style="padding-right: 0px">
+                                        <ul class="collapse list-unstyled" id="personSubmenu1">
+                                            <li>
+                                                <a href="/programs/strahovanie-gruzovyh-avtomobilej" class="list-group-item list-group-item-action
+                                    {% if insuranceProgram.url == "strahovanie-gruzovyh-avtomobilej" %} active {% endif %}">
+                                                    Страхование грузовых автомобилей</a>
+                                            </li>
+                                            <li>
+                                                <a href="/programs/strahovanie-voditelja-passazhira" class="list-group-item list-group-item-action
+                                    {% if insuranceProgram.url == "strahovanie-voditelja-passazhira" %} active {% endif %}">
+                                                    Страхование водителя и пассажира.
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#personSubmenu2" data-toggle="collapse" aria-expanded="false"
+                                       class="list-group-item list-group-item-action">Страхование здоровья
+                                        <span>
+                                    <i class="fa fa-caret-down"></i>
+                                </span>
+                                    </a>
+                                    <div class="container" style="padding-right: 0px">
+                                        <ul class="collapse list-unstyled" id="personSubmenu2">
+                                            <li>
+                                                <a href="/programs/neschastnye-sluchai" class="list-group-item list-group-item-action
+                                    {% if insuranceProgram.url == "neschastnye-sluchai" %} active {% endif %}">
+                                                    Несчастные случаи: страхование лучшая защита от травм
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/programs/socialnoe-strahovanie"
+                                                   class="list-group-item list-group-item-action
+                                    {% if insuranceProgram.url == "socialnoe-strahovanie" %} active {% endif %}">
+                                                    Социальное страхование</a>
+                                            </li>
+                                            <li>
+                                                <a href="/programs/strahovanie-pri-vyezde-za-granicu" class="list-group-item list-group-item-action
+                                    {% if insuranceProgram.url == "strahovanie-pri-vyezde-za-granicu" %} active {% endif %}">
+                                                    Медицинское страхование при выезде за границу</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="/programs/strahovanie-zhizni"
+                                       class="list-group-item list-group-item-action {% if insuranceProgram.url == "strahovanie-zhizni" %} active {% endif %}">
+                                        Страхование жизни в Беларуси </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#inRBSubmenu" data-toggle="collapse" aria-expanded="false"
+                           class="list-group-item list-group-item-action {% if insuranceProgram.url == "strahovanija-v-rb" %} active {% endif %}">
+                            Страхование в РБ
+                            <span>
+                            <i class="fa fa-caret-down"></i>
+                        </span>
+                        </a>
+                        <ul class="collapse list-unstyled" id="inRBSubmenu">
+                            <li>
+                                <a href="/programs/rynok-strahovanija-v-rb"
+                                   class="list-group-item list-group-item-action
+                                {% if insuranceProgram.url == "rynok-strahovanija-v-rb" %} active {% endif %}">
+                                    Рынок страхования в Республике Беларусь</a>
+                            </li>
+                            <li>
+                                <a href="/programs/skidki-v-strahovanii"
+                                   class="list-group-item list-group-item-action
+                                {% if insuranceProgram.url == "skidki-v-strahovanii" %} active {% endif %}">Скидки
+                                    в страховании. Надо знать как сэкономить!</a>
+                            </li>
+                            <li>
+                                <a href="/programs/strahovanie-sklada-v-rb"
+                                   class="list-group-item list-group-item-action {% if insuranceProgram.url == "strahovanie-sklada-v-rb" %} active {% endif %}">Страхование
+                                    склада и имущества в Республике Беларусь</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="sidebar"><h3>Наши преимущества</h3>
+                    <div class="textwidget">
+                        <div class="container">
+                            <ul class="list-unstyled">
+                                <li><i class="fa fa-check" aria-hidden="true"></i> Скидки от страховой компании</li>
+                                <li><i class="fa fa-check" aria-hidden="true"></i> Бесплатная доставка</li>
+                                <li><i class="fa fa-check" aria-hidden="true"></i> Более 15 компаний-партнеров</li>
+                                <li><i class="fa fa-check" aria-hidden="true"></i> Умный выбор программы страхования
+                                </li>
+                                <li><i class="fa fa-check" aria-hidden="true"></i> Наши услуги для вас бесплатны</li>
+                                <li><i class="fa fa-check" aria-hidden="true"></i> Юридическая помощь</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page Content  -->
+            <div id="content" class="col-md-8 col-md-pull-8 col-sm-12" style="margin-top: -2rem;">
+                <h1 class="text-lg-left" style="margin-left:20px">{{ insuranceProgram.title }}</h1>
+                <div class="card-text">
+                    {{ insuranceProgram.content | safe }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="container" style="height: 60px;"></div>
+
+    <div class="container">
+        <form class="form" action="{% url 'add_phone' %}" method="post">
+            <div class="text-center"
+                 style="font-family: 'Montserrat', sans-serif; font-size: 14pt; font-weight: 500; margin-bottom: 10px;">
+                Остались вопросы? Наши эксперты свяжутся с вами!
+            </div>
+
+            <div class="form-group d-flex justify-content-center" style="margin:0;">
+                <input type="number" class="form-control " placeholder="Номер телефона" name="phoneNumber"
+                       aria-describedby="CallHelp"
+                       style="width: 25rem;">
+            </div>
+            <div class="form-group d-flex justify-content-center" style="margin:0; margin-top: 15px;">
+                <input type="text" class="form-control " placeholder="ФИО" name="name" aria-describedby="CallHelp"
+                       style="width: 25rem;">
+            </div>
+            <small id="emailHelp" class="form-text text-muted text-center">Мы никогда не будем делиться вашими
+                данными.</small>
+            <div class="col text-center" style="margin-top: 5px;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-dark" style="width: 30rem; margin-top: 2px;">Записаться</button>
+            </div>
+        </form>
+    </div>
+    <div class="container" style="height: 50px;"></div>
+
+
+{% endblock content %}

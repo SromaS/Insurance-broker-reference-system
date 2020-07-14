@@ -1,276 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'HelpSystem/base.html' %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../../static/css/style.css">
-    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap-grid.css">
-    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <title>Главная</title>
-</head>
+{% block content %}
 
-<body>
-
-    <div class="wrapper">
-        <header>
-            <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white box-shadow">
-
-                <h4 class="my-0 mr-md-auto font-weight-normal"><b>IRSIB</b></h4>
-
-                <ul class="nav nav-pills flex-column flex-sm-row justify-content-end ">
-                    <li class="nav-item ">
-                        <a class="nav-link active " href="#">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Программы страхования</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Статьи</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Расчёт страховки</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">О компании</a>
-                    </li>
-                </ul>
-
-            </div>
-        </header>
-        <div class="container" style="height: 120px;"></div>
-
-
-
-        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-
-            <h1 class="display-3" style="color: #ad7835; "><b>IRSIB</b></h1>
-
-            <h3> Ваша финансовая безопасность </h3>
-            <br>
-            <div class="main-info">
-
-                <p class="lead text-justify-center">Агентство «IRSIB» предлагает клиентам качественные услуги по
-                    страхованию. Мы составим индивидуальный план покрытия рисков с учетом ваших потребностей. Наша
-                    компания была основана в 2000 году с целью предоставлять доступные страховые услуги физическим и
-                    юридическим лицам. Свяжитесь с нами и запишитесь на встречу с нашими экспертами.</p>
-            </div>
-
-
-        </div>
-
-        <div class="fixed-bg"></div>
-
-        <div class="container" style="height: 120px;"></div>
-
-
-
-
-    </div>
-    <div class="TripBg">
-        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-            <div class="display-4" style="color: #ad7835; "><b> Программы </b></div>
-            <br>
-            <h4> Наши предложения </h4>
-            <br>
-        </div>
-
-        <div class="page-content">
-            <div class="card2">
-                <div class="content">
-                    <h2 class="title">Страхование для частных лиц</h2>
-                    <p class="copy">Защита, которая нужна именно вам.</p>
-                    <p class="copy2">Cегодня эта сфера страхования в Беларуси активно развивается. Среди наиболее
-                        популярных видов страхования, которые выбирают белорусы – «IRSIB», страхование жизни и здоровья,
-                        страхование при выезде за границу.</p>
-                    <button class="btn" style="color: white;">Узнать подробнее</button>
-                </div>
-            </div>
-            <div class="card2">
-                <div class="content">
-                    <h2 class="title">Страхование организациям</h2>
-                    <p class="copy">Ваше благополучие прежде всего</p>
-                    <p class="copy2">Cегодня эта сфера страхования в Беларуси активно развивается. Среди наиболее
-                        популярных видов страхования, которые выбирают белорусы – «IRSIB», страхование жизни и здоровья,
-                        страхование при выезде за границу.</p>
-                    <button class="btn" style="color: white;">Узнать подробнее</button>
-                </div>
-            </div>
-            <div class="card2">
-                <div class="content">
-                    <h2 class="title">Страхование в РБ</h2>
-                    <p class="copy">Готовы ко всему</p>
-                    <p class="copy2">Cегодня эта сфера страхования в Беларуси активно развивается. Среди наиболее
-                        популярных видов страхования, которые выбирают белорусы – «IRSIB», страхование жизни и здоровья,
-                        страхование при выезде за границу.</p>
-                    <button class="btn" style="color: white;">Узнать подробнее</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrapper">
-        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-            <div class="container" style="height: 120px;"></div>
-
-
-            <div class="display-4" style="color: #ad7835; "><b>Подробнее о нашей деятельности</b></div>
-
-            <br>
-            <div class="main-info">
-
-                <p class="lead text-justify-center">
-                    Агентство «IRSIB» предлагает клиентам лучшие возможности страхования.
-                    Мы стали одной из ведущих страховых компаний в г. Москва и накопили большую клиентскую базу
-                    благодаря
-                    клиентоориентированному сервису. Свяжитесь с нами, если вы хотите иметь дело с лучшим агентством,
-                    которое
-                    сделает все возможное, чтобы вы остались довольны. Наши специалисты помогут вам застраховать все,
-                    что угодно, и с удовольствием проведут бесплатную оценку.</p>
-            </div>
-        </div>
-
-
-
-        <div class="container" style="height: 120px;"></div>
-        <div class="TripBg">
-            <div class="row">
-                <div class="col">
-                    <div class="container" style="height: 4em;"></div>
-                    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-                        <div class="display-4" style="color: #ad7835; "><b> Свяжитесь с нами</b></div>
-                    </div>
-                    <p class="text-center" style="font-family: 'Montserrat', sans-serif;">Почта: roma1off1acc@gmail.com
-                    </p>
-                    <p class="text-center" style="font-family: 'Montserrat', sans-serif;">Тел: +375188805023</p>
-                    <p class="text-center" style="font-family: 'Montserrat', sans-serif;">Факс: (047) 123-64-11.</p>
-                </div>
-                <div class="col-auto" style="height: 450px;">
-                    <img src="../../static/images/main_5.jpg" height="450px">
-                </div>
-            </div>
-
-            <div class="card card-cascade narrower">
-                <div id="map-container-google-9" class="z-depth-1-half map-container-5" style="height: 29rem">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8019.078667503815!2d26.515502663631512!3d53.30589976262972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46d9223c480f68c1%3A0xff0f7ec5802a9033!2z0JPQvtGA0L7QtNC10LnRgdC60LjQuSDRgdCw0YXQsNGA0L3Ri9C5INC60L7QvNCx0LjQvdCw0YI!5e0!3m2!1sru!2sby!4v1584832743033!5m2!1sru!2sby"
-                        width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""
-                        aria-hidden="false" tabindex="0"></iframe>
-                </div>
-            </div>
-
-        </div>
-        <div class="container" style="height: 80px;"></div>
-
-
-        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-            <div class="display-4" style="color: #ad7835; "><b>Новые статьи</b></div>
-            <br>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col order-1">
-                    <div class="card bg-dark text-white">
-                        <img class="card-img" alt="Изображение не доступно" style="height: 475px;">
-                        <div class="card-img-overlay article" style="background:url(../../media/articles/moto.jpg);">
-                            <div class="container">
-                                <p class="card-text " style="font-size: 1.35rem;">Автор: ♛ Сень Роман</p>
-                                <div class="container" style="height: 300px;"></div>
-                                <h5 class="card-title">Как защитить свой дом, пока вас нет </h5>
-                                <hr
-                                    style="color: white; border: none;  height: 2px; background-color: white; width: 96%;">
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="card-text"><i>Просмотров:</i> 12</p>
-                                    </div>
-                                    <div class="col">
-                                        <p class="card-text"><i style="color:red;">♥</i>12</p>
-                                    </div>
-                                    <div class="col">
-                                        <p class="btn" style="margin:-0.60em 0 0 0; color: white;">Читать</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col order-1">
-                    <div class="card bg-dark text-white">
-                        <img class="card-img" alt="Изображение не доступно" style="height: 475px;">
-                        <div class="card-img-overlay article" style="background:url(../../media/articles/moto.jpg);">
-                            <div class="container">
-                                <p class="card-text " style="font-size: 1.35rem;">Автор: ♛ Сень Роман</p>
-                                <div class="container" style="height: 300px;"></div>
-                                <h5 class="card-title">Как защитить свой дом, пока вас нет </h5>
-                                <hr
-                                    style="color: white; border: none;  height: 2px; background-color: white; width: 96%;">
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="card-text"><i>Просмотров:</i> 12</p>
-                                    </div>
-                                    <div class="col">
-                                        <p class="card-text"><i style="color:red;">♥</i>12</p>
-                                    </div>
-                                    <div class="col">
-                                        <p class="btn" style="margin:-0.60em 0 0 0; color: white;">Читать</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<div class="row">
+    <div class="col-sm-3" style="margin-top:4%; margin-left:18%;">
+        <div class="card" style="width: 475px; height: auto;">
+            <div class="TripBg" style="z-index: 1;">
+                <div class="container">
+                    <h4 class="display-4" style="color: #ad7835; padding-left: 20px;
+                         padding-top: 20px; padding-bottom:30px;"><b> Кто мы? </b></h4>
+                    <div class="container" style="padding-left: 20px; padding-right: 20px;
+                         padding-bottom: 30px;">
+                        <p>Агентство «IRSIB» — это одни из лучших
+                            страховых специалистов на рынке, которые защищают интересы клиентов с 2000 года.
+                            Со дня основания компании мы упорно трудились, чтобы иметь возможность предоставлять
+                            вам самые качественные услуги в сфере страхования, среди которых страхование частных
+                            лиц, страхование организациям и
+                            страхование в РБ.
+                        </p>
+                        <h6>В настоящее время при обращении в компанию «IRSIB» клиент может рассчитывать на:</h6>
+                        <ul>
+                            <li>
+                                индивидуальный подход;
+                            </li>
+                            <li>
+                                выбор наиболее выгодных условий страхования.
+                            </li>
+                            <li>
+                                консультации при заключении договора.
+                            </li>
+                            <li>
+                                консультации на время действия договора.
+                            </li>
+                            <li>
+                                бесплатную доставку страховых полисов;
+                            </li>
+                            <li>
+                                уведомление о сроке выплат страховых взносов.
+                            </li>
+                        </ul>
+                        <p style="padding-bottom: 10px;"> Вы можете быть уверены: с нами ваши близкие и имущество
+                            будут под надежной защитой.
+                            Мы предлагаем широкий спектр страховых продуктов и поддержку именно тогда, когда они
+                            необходимы.
+                            Получите дополнительный уровень защиты, который вы так долго искали. Свяжитесь с нами.
+                        </p>
+                        <a class="btn btn-dark" href="#yak1" style="text-transform: none; margin-top: 10px; margin-left: 10px;
+                             padding: 10px 10px;">
+                            Свяжитесь с нами
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="container" style="height: 120px;"></div>
-
     </div>
-
-    <div class="container">
-        <form class="form">
-            <div class="text-center"
-                style="font-family: 'Montserrat', sans-serif; font-size: 14pt; font-weight: 500; margin-bottom: 10px;">
-                Подписаться на
-                рассылку</div>
-            <div class="form-group d-flex justify-content-center" style="margin:0;">
-                <input type="email" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp"
-                    style="width: 30rem;">
-            </div>
-            <small id="emailHelp" class="form-text text-muted text-center">Мы никогда не будем делиться вашей
-                электронной почтой
-                ни с кем другим.</small>
-            <div class="row">
-                <div class="col text-center">
-                    <button type="submit" class="btn btn-dark" style="width: 30rem; margin-top: 2px;">Submit</button>
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <div class="container" style="height: 60px;"></div>
-
-    <footer class="pt-2 my-md-1 pt-md-2 border-top">
-        <div class="row">
-            <div class="col-2 col-md">
-                <div class="p-1 text-center" style="font-family: 'Montserrat', sans-serif;">Created by Roma SEN</div>
-                <small class="d-block mb-4 text-muted text-center "
-                    style="font-family: 'Montserrat', sans-serif;">&copy; 2020 IRSIB</small>
-            </div>
+    <div class="col-sm-6">
+        <div class="side">
+            <img src="../../static/images/about_3.jpg"
+                 style="width: 560px; height: 920px; object-fit: cover; object-position: 50% 50%;">
         </div>
-    </footer>
-
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+<div class="container" style="height: 120px;"></div>
 
-</body>
+<div class="container">
+    <form class="form" action="{% url 'add_phone' %}" method="post">
+        <div class="text-center"
+             style="font-family: 'Montserrat', sans-serif; font-size: 14pt; font-weight: 500; margin-bottom: 10px;">
+            Появились вопросы? Запишитесь на консультацию!
+        </div>
 
-</html>
+        <div class="form-group d-flex justify-content-center" style="margin:0;">
+            <input type="number" class="form-control " id="yak1" placeholder="Номер телефона" name="phoneNumber"
+                   aria-describedby="CallHelp"
+                   style="width: 25rem;">
+        </div>
+        <div class="form-group d-flex justify-content-center" style="margin:0; margin-top: 15px;">
+            <input type="text" class="form-control " placeholder="ФИО" name="name" aria-describedby="CallHelp"
+                   style="width: 25rem;">
+        </div>
+        <small id="emailHelp" class="form-text text-muted text-center">Мы никогда не будем делиться вашими
+            данными.</small>
+        <div class="col text-center" style="margin-top: 5px;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-dark" style="width: 20rem; margin-top: 2px;">Записаться</button>
+        </div>
+    </form>
+</div>
+
+<div class="container" style="height: 35px;"></div>
+
+{% endblock content %}

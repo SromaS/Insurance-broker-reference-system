@@ -1,0 +1,51 @@
+<div class="wrapper">
+    <header>
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white box-shadow">
+
+            <h4 class="my-0 mr-md-auto font-weight-normal"><b>IRSIB</b></h4>
+
+            <ul class="nav nav-pills flex-column flex-sm-row justify-content-end ">
+                {% with url_name=request.resolver_match.url_name %}
+                    <li class="nav-item ">
+                        <a class="nav-link {% if url_name == 'main' %} active {% endif %} " href="{% url 'main' %}">Главная</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {% if url_name == 'program_detail' %} active {% endif %}" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Программы страхования
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/programs/organization">Организациям</a>
+                            <a class="dropdown-item" href="/programs/chastnym-licam">Страхование для частных лиц</a>
+                            <a class="dropdown-item" href="/programs/strahovanija-v-rb">Страхование в Республике
+                                Беларусь</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if url_name == 'articles_list' %} active {% endif %}" href="{% url 'articles_list' %}">Статьи</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if url_name == 'about' %} active {% endif %}" href="{% url 'about' %}">О компании</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if url_name == 'logout' %} active {% endif %}" href="{% url 'logout' %}">Выйти</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Войти
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item {% if url_name == 'login' %} active {% endif %}" href="{% url 'login' %}">Авторизация</a>
+                                <a class="dropdown-item {% if url_name == 'register' %} active {% endif %}" href="{% url 'register' %}">Регистрация</a>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endwith %}
+            </ul>
+
+        </div>
+    </header>
+</div>
