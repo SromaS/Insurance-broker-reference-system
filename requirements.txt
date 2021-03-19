@@ -1,7 +1,7 @@
 django>=3.0.3
 mysqlclient == 1.4.6
 sqlparse == 0.3.0
-pillow == 7.0.0
+pillow == 8.1.1
 asgiref == 3.2.3
 grappelli ==2.14.1
 debug_toolbar ==2.2
